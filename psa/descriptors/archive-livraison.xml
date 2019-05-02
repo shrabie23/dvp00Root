@@ -1,0 +1,72 @@
+<!-- ***************************************************************** -->
+<!-- Ce fichier permet de décrire de manière précise l'organisation -->
+<!-- de l'archive TAR qui va être construite par la JIP puis déposée -->
+<!-- automatiquement par la suite sur l'environnement de développement -->
+<!-- ***************************************************************** -->
+
+<!-- !!!! NOTE IMPORTANTE !!!! Il ne s'agit que d'un EXEMPLE qui ne fait pas office de convention PSA pour la structure des archives de livraison. -->
+<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3"
+    xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+
+    <!-- Eviter de toucher aux quelques lignes suivantes -->
+    <id>livraison</id>
+    <formats>
+        <format>tar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+        <fileSets>
+            <fileSet>
+            <directory>../simulation-api/target</directory>
+            <outputDirectory>/j2ee</outputDirectory>
+            <includes>
+                <include>*.war</include>
+            </includes>
+        </fileSet>
+
+    <!-- A partir de là, il s'agit de la description précises de l'archive -->
+
+        <!-- ********************************** -->
+        <!-- LIVRAISON DES MESSAGES             -->
+        <!-- ********************************** -->
+        <fileSet>
+            <directory>../simulation-api/i18n/messages</directory>
+            <outputDirectory>/data/messages</outputDirectory>
+        </fileSet>
+        
+        <!-- ********************************** -->
+        <!-- LIVRAISON DE KEY STORE             -->
+        <!-- ********************************** -->
+        <fileSet>
+            <directory>../simulation-api/security</directory>
+            <outputDirectory>/data/security</outputDirectory>
+        </fileSet>
+
+        <!-- ********************************** -->
+        <!-- LIVRAISON DES TEMPLATE A L'INDUS   -->
+        <!-- ********************************** -->
+        <fileSet>
+            <directory>../simulation-api/psa/valorisation/templates/conf</directory>
+            <outputDirectory>/valorisation/templates/conf</outputDirectory>
+        </fileSet>
+        
+        <!-- Exemple DICO INDUS -->
+        <fileSet>
+            <directory>psa/valorisation/dictionaries</directory>
+            <includes>
+                <include>dico-dev.properties</include>
+            </includes>
+            <outputDirectory>/valorisation/dictionaries</outputDirectory>
+        </fileSet>
+        
+        <!-- ********************************** -->
+        <!-- VALORISATION DE LA CONFIG DE DEV   -->
+        <!-- ********************************** -->
+        
+        <fileSet>
+            <directory>../simulation-api/psa/valorisation/templates/conf</directory>
+            <outputDirectory>/data/conf</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+
+    </fileSets>
+</assembly>

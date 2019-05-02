@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scanPeriod="10 seconds" scan="true">
+    <appender name="ConsoleOut" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+            <pattern>%d %-5level [%thread] %logger{26}: %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="logFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>C:/ATOS/logs/simulation-api.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rotate every day for log collection and archiving -->
+            <fileNamePattern>C:/ATOS/logs/simulation-api.%d{yyyyMMdd}_%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>50MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- keep maxHistory days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %-5level [%thread] %logger{26}: %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <logger name="com.inetpsa.dvp" level="DEBUG" additivity="false">
+        <appender-ref ref="logFile" />
+        <appender-ref ref="ConsoleOut"/>
+    </logger>
+    
+   
+    <root level="DEBUG">
+        <appender-ref ref="logFile" />
+        <appender-ref ref="ConsoleOut" />
+    </root>
+
+</configuration>

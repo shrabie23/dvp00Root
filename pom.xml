@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.inetpsa.ciq</groupId>
+        <artifactId>psa-java-root</artifactId>
+        <version>3.4.0</version>
+    </parent>
+    <groupId>com.inetpsa.dvp00</groupId>
+    <artifactId>dvp00Root</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>dvp00 root project</name>
+    <description>Root project of the sample CD project</description>
+    <distributionManagement>
+        <site>
+            <id>projectSite</id>
+            <url>${urlProjectSite}</url>
+        </site>
+    </distributionManagement>
+    <properties>
+        <!-- PSA SVN Custom Properties -->
+        <envInst>dvp00</envInst>
+        <scmUser>mdeidp00</scmUser>
+        <!-- <svnUser>mdemdvp00</svnUser> -->
+        <!-- <svnInstance>5</svnInstance> -->
+        <!-- <svnRoot>/svn/msq00/trunk/</svnRoot> -->
+        <!-- <svnModuleName>msq00Root</svnModuleName> -->
+        <!-- <webContent>${basedir}/WebContent</webContent> -->
+        <!-- <archiveAssemblyFinalName>${envInst}-${project.version}</archiveAssemblyFinalName> -->
+        <valo.env>local</valo.env>
+        <sourceEncoding>UTF-8</sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <javaSourceCompatibility>${java.version}</javaSourceCompatibility>
+        <javaTargetCompatibility>${java.version}</javaTargetCompatibility>
+        <currentJavaPath>${javaPath_18}</currentJavaPath>
+        <logback.version>1.2.3</logback.version>
+        <spring-boot.vesion>1.5.12.RELEASE</spring-boot.vesion>
+        <docker.host>yvao0fg0.cloudpsa.com</docker.host>
+    </properties>
+
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.vesion}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+    </dependencies>
+    <modules>
+        <module>dvp00RestApi</module>
+    </modules>
+</project>
