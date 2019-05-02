@@ -40,7 +40,6 @@
         <docker.host>yvao0fg0.cloudpsa.com</docker.host>
     </properties>
 
-
     <build>
         <pluginManagement>
             <plugins>

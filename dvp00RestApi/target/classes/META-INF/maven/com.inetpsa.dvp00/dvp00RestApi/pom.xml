@@ -15,22 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -67,20 +52,21 @@
                                             <tag>${ImageTag}</tag>
                                         </tags>
                                         <from>repository.mpsa.com/sfj00/tomcatsibs:8.5</from>
-                                        <assembly>
-                                            <mode>zip</mode>
-                                            <basedir>/</basedir>
-                                            <user>tomcat:tomcat:tomcat</user>
-                                            <inline>
-                                                <files>
-                                                    <file>
-                                                        <source>${project.build.directory}/${project.build.finalName}.war</source>
-                                                        <outputDirectory>/usr/local/tomcat/webapps</outputDirectory>
-                                                    </file>
-                                                </files>
-                                            </inline>
-                                        </assembly>
-                                        <ports>8080</ports>
+                                        <!-- <assembly> -->
+                                        <!-- <mode>zip</mode> -->
+                                        <!-- <basedir>/</basedir> -->
+                                        <!-- <user>tomcat:tomcat:tomcat</user> -->
+                                        <!-- <inline> -->
+                                        <!-- <files> -->
+                                        <!-- <file> -->
+                                        <!-- <source>${project.build.directory}/${project.build.finalName}.war</source> -->
+                                        <!-- <outputDirectory>/usr/local/tomcat/webapps</outputDirectory> -->
+                                        <!-- </file> -->
+                                        <!-- </files> -->
+                                        <!-- </inline> -->
+                                        <!-- </assembly> -->
+                                        <!-- <ports>8080</ports> -->
+                                        <dockerFile>${project.basedir}</dockerFile>
                                     </build>
                                 </image>
                             </images>
@@ -121,22 +107,23 @@
                                         <tags>
                                             <tag>${ImageTag}</tag>
                                         </tags>
-                                        <from>repository.inetpsa.com/sfj00/tomcatsibs:8.5</from>
-                                        <assembly>
-                                            <mode>zip</mode>
-                                            <basedir>/</basedir>
-                                            <user>tomcat:tomcat:tomcat</user>
-                                            <inline>
-                                                <files>
-                                                    <file>
-                                                        <source>${project.build.directory}/${project.build.finalName}.war
-                                                        </source>
-                                                        <outputDirectory>/usr/local/tomcat/webapps</outputDirectory>
-                                                    </file>
-                                                </files>
-                                            </inline>
-                                        </assembly>
-                                        <ports>8080</ports>
+                                        <dockerFile>${project.basedir}</dockerFile>
+                                        <!-- <from>repository.inetpsa.com/sfj00/tomcatsibs:8.5</from> -->
+                                        <!-- <assembly> -->
+                                        <!-- <mode>zip</mode> -->
+                                        <!-- <basedir>/</basedir> -->
+                                        <!-- <user>tomcat:tomcat:tomcat</user> -->
+                                        <!-- <inline> -->
+                                        <!-- <files> -->
+                                        <!-- <file> -->
+                                        <!-- <source>${project.build.directory}/${project.build.finalName}.war -->
+                                        <!-- </source> -->
+                                        <!-- <outputDirectory>/usr/local/tomcat/webapps</outputDirectory> -->
+                                        <!-- </file> -->
+                                        <!-- </files> -->
+                                        <!-- </inline> -->
+                                        <!-- </assembly> -->
+                                        <!-- <ports>8080</ports> -->
                                     </build>
                                 </image>
                             </images>
